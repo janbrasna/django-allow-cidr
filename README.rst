@@ -42,7 +42,7 @@ Features
   not replace, the normal Django function.
 * If you do define ``ALLOWED_CIDR_NETS`` and it has values, the middleware will capture what you have in `ALLOWED_HOSTS`,
   set ``ALLOWED_HOSTS`` to `['*']` and take over validation of host headers.
-* The ``ALLOWED_CIDR_NETS`` values can be any valid network definition for the `netaddr`_ package.
+* The ``ALLOWED_CIDR_NETS`` values can be any valid network definition for the `ipaddress`_ library.
 
 Running Tests
 -------------
@@ -72,6 +72,6 @@ Tools used in rendering this package:
 *  Cookiecutter_
 *  `cookiecutter-djangopackage`_
 
-.. _netaddr: https://netaddr.readthedocs.io/en/latest/
+.. _ipaddress: https://docs.python.org/3/library/ipaddress.html
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage
