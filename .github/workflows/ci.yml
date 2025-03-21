@@ -12,67 +12,34 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.7"
-          - "3.8"
           - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
-
         django-tox-env:
           - "django22"
           - "django32"
-          - "django40"
-          - "django41"
           - "django42"
-          - "django50"
-
-        exclude:
-          # We don't want every combination of the above, as some are not compatible
-
-          - python-version: "3.7"
-            django-tox-env: "django40"
-
-          - python-version: "3.7"
-            django-tox-env: "django41"
-
-          - python-version: "3.7"
-            django-tox-env: "django42"
-
-          - python-version: "3.7"
-            django-tox-env: "django50"
-
-          - python-version: "3.8"
-            django-tox-env: "django50"
-
+          - "django51"
+        exclude: # We don't want every combination of the above, as some are not compatible
           - python-version: "3.9"
-            django-tox-env: "django50"
-
+            django-tox-env: "django51"
           - python-version: "3.10"
             django-tox-env: "django22"
-
           - python-version: "3.11"
             django-tox-env: "django22"
-
+          - python-version: "3.11"
+            django-tox-env: "django32"
           - python-version: "3.12"
             django-tox-env: "django22"
-
-          - python-version: "3.11"
-            django-tox-env: "django40"
-
           - python-version: "3.12"
-            django-tox-env: "django40"
-
-          - python-version: "3.12"
-            django-tox-env: "django41"
-
-    name: Python ${{ matrix.python-version }} in use with ${{ matrix.django-tox-env }}
+            django-tox-env: "django32"
+    name: Python ${{ matrix.python-version }} with ${{ matrix.django-tox-env }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          architecture: "x64" # optional x64 (default) or x86.
       - name: Install test requirements
         run: pip install -r requirements_test.txt
       - name: Run tox
@@ -82,10 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Flake 8
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: "3.11"
       - name: Install test requirements
         run: pip install -r requirements_test.txt
       - name: Run flake8 linting
@@ -99,10 +66,10 @@ jobs:
       - lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: "3.11"
       - name: Install dependencies for package building only
         run: pip install build
       - name: Build package for upload to PyPI
