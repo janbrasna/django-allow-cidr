@@ -22,9 +22,12 @@ jobs:
           - "django32"
           - "django42"
           - "django51"
+          - "django52"
         exclude: # We don't want every combination of the above, as some are not compatible
           - python-version: "3.9"
             django-tox-env: "django51"
+          - python-version: "3.9"
+            django-tox-env: "django52"
           - python-version: "3.10"
             django-tox-env: "django22"
           - python-version: "3.11"
