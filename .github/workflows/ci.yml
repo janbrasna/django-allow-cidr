@@ -57,7 +57,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    name: Flake 8
+    name: Flake8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
